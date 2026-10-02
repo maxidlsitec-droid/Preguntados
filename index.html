@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TriviaX — Preguntados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">✦</div>
+        <div>
+          <h1>Trivia<span>X</span></h1>
+          <p>Demostrá cuánto sabés</p>
+        </div>
+      </div>
+      <button class="sound-btn" id="soundBtn" title="Activar/desactivar sonidos">🔊</button>
+    </header>
+
+    <section id="homeScreen" class="screen active">
+      <div class="hero-card">
+        <div class="hero-badge">🧠 DESAFÍO DE CONOCIMIENTO</div>
+        <h2>Girá la ruleta.<br><span>Respondé y ganá.</span></h2>
+        <p>Como en los juegos de trivia: hacé girar la ruleta y descubrí qué materia te toca. ¿Hasta dónde llegás?</p>
+      </div>
+
+      <div class="wheel-section">
+        <div class="wheel-header">
+          <div>
+            <h3>La ruleta del conocimiento</h3>
+            <p>La suerte decide tu próxima categoría.</p>
+          </div>
+          <div class="legend"><span></span> 6 materias</div>
+        </div>
+
+        <div class="wheel-stage">
+          <div class="wheel-pointer">▼</div>
+          <div class="wheel-glow"></div>
+          <canvas id="wheelCanvas" width="500" height="500"></canvas>
+          <div class="wheel-center">
+            <div class="wheel-center-inner">?</div>
+          </div>
+        </div>
+
+        <button class="spin-btn" id="spinBtn">
+          <span class="spin-icon">↻</span>
+          GIRAR RULETA
+        </button>
+        <p class="wheel-hint" id="wheelHint">La ruleta elegirá una materia al azar</p>
+      </div>
+
+      <div class="quick-subjects">
+        <h3>O elegí directamente</h3>
+        <div class="quick-grid">
+          <button class="quick-math" data-subject="Matemática"><i>∑</i><span>Matemática</span></button>
+          <button class="quick-history" data-subject="Historia"><i>🏛</i><span>Historia</span></button>
+          <button class="quick-geography" data-subject="Geografía"><i>🌎</i><span>Geografía</span></button>
+          <button class="quick-science" data-subject="Ciencias"><i>🔬</i><span>Ciencias</span></button>
+          <button class="quick-language" data-subject="Lengua"><i>✍</i><span>Lengua</span></button>
+          <button class="quick-tech" data-subject="Tecnología"><i>💻</i><span>Tecnología</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="game-top">
+        <button class="back-btn" id="backBtn">← Salir</button>
+        <div class="subject-pill" id="subjectPill">Matemática</div>
+        <div class="lives" id="lives">❤️ ❤️ ❤️</div>
+      </div>
+
+      <div class="progress-area">
+        <div class="progress-info">
+          <span id="questionCounter">Pregunta 1 de 10</span>
+          <span id="scoreLabel">0 pts</span>
+        </div>
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+      </div>
+
+      <div class="question-card" id="questionCard">
+        <div class="timer-wrap">
+          <div class="timer" id="timer">15</div>
+          <span>segundos</span>
+        </div>
+        <div class="question-category" id="questionCategory">MATEMÁTICA</div>
+        <h2 id="questionText">Pregunta...</h2>
+        <div class="answers" id="answers"></div>
+      </div>
+
+      <div class="game-footer">
+        <div class="streak">🔥 Racha: <strong id="streak">0</strong></div>
+        <div class="hint">Seleccioná una respuesta</div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="result-card">
+        <div class="trophy" id="trophy">🏆</div>
+        <p class="result-kicker">DESAFÍO TERMINADO</p>
+        <h2 id="resultTitle">¡Excelente!</h2>
+        <p id="resultMessage">Terminaste la partida.</p>
+
+        <div class="final-score">
+          <small>PUNTAJE FINAL</small>
+          <strong id="finalScore">0</strong>
+          <span>puntos</span>
+        </div>
+
+        <div class="stats">
+          <div><strong id="correctCount">0</strong><span>Correctas</span></div>
+          <div><strong id="bestStreak">0</strong><span>Mejor racha</span></div>
+          <div><strong id="accuracy">0%</strong><span>Precisión</span></div>
+        </div>
+
+        <div class="result-actions">
+          <button class="primary-btn" id="playAgain">🔄 Jugar de nuevo</button>
+          <button class="secondary-btn" id="homeBtn">⌂ Volver al inicio</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
